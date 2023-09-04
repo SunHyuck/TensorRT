@@ -16,6 +16,7 @@ EXPLICIT_BATCH = 1 << (int)(trt.NetworkDefinitionCreationFlag.EXPLICIT_BATCH)
 network = builder.create_network(EXPLICIT_BATCH)
 config = builder.create_builder_config()
 config.max_workspace_size = 1 << 28
+# config.setDLACore()
 
 if builder.platform_has_fast_fp16:
     config.set_flag(trt.BuilderFlag.FP16)
