@@ -66,7 +66,7 @@ class TestModel(nn.Module):
       return x
 
 batch_size = 128 # 16
-epochs = 1
+epochs = 50
 learning_rate = 0.1
 
 train_transform = transforms.Compose([
@@ -120,7 +120,7 @@ for epoch in range(epochs):
             correct += torch.sum(torch.argmax(output, dim=1) == label).item()
             all_data += len(label)
 
-x = torch.randn(batch_size, 3, 32, 32)
+x = torch.randn(batch_size, 3, 32, 32).cuda()
 
 torch.onnx.export(model,
                   x,
